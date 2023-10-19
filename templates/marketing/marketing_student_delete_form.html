@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+
+<div class="container justify-content-center py-5">
+ <div class="center verticle_center full_height ">
+  <div class="login_section py-5"><br><br><br>
+
+   <div class="center py-5 "><br><br>
+    <h1>
+     <h1 class="text-danger"><b>ARE YOU SURE YOU WANTS TO DELETE..?</b></h1>
+    </h1>
+   </div>
+
+
+   <div class="row justify-content-center">
+    <div class="col-md-7">
+
+     <form method="post">
+      {% for message in messages %}
+      <div class="alert alert-danger {{ message.tags }} alert-dismissible fade show" role="alert">
+       {{ message }}
+       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      {% endfor %}
+
+      {% csrf_token %}
+      {{ form.as_p }}
+
+      <div class="field margin_0 py-3 ">
+       <a href="{% url 'marketing_home' %}" class="btn btn-secondary m-3 pl-5 pl-4 pr-5 pt-3 pb-3">Back</a>
+       <button type="submit" class="btn btn-danger m-3 pl-5 pl-4 pr-5 pt-3 pb-3">Delete</button>
+
+      </div>
+     </form>
+    </div>
+   </div>
+  </div>
+ </div>
+</div>
+</div>
+
+
+
+
+
+
+
+{% endblock %}

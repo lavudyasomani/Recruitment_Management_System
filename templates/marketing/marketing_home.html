@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- table section -->
+<div class="container-fluid mt-5">
+ <div class="row">
+  <div class="col-md-12">
+   <div class="white_shd full margin_bottom_30">
+    <div class="full graph_head">
+     <div class="heading1 margin_0">
+
+      <h2> Marketing Student data </h2>
+     </div>
+    </div>
+    <div class="row justify-content-end mr-5 pr-5 mb-0 pb-0">
+
+     <a href="{% url 'marketing_student_data' %}"><b><img src="{% static 'images/icons/plus.png' %}" class="" width="11px"
+        height="11px" alt="eye"> Add student</b></a>
+    </div>
+
+    <div class="table_section padding_infor_info">
+     <div class="table-responsive-sm">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>#</th>
+         <th>Name</th>
+         <th>Qualifications</th>
+         <th>Pass Out</th>
+         <th>Email</th>
+         <th>Resume</th>
+         <th>Actions</th>
+
+        </tr>
+       </thead>
+       <tbody>
+        {% for marketing_data in marketing_stu_data %}
+        <tr>
+         <td>{{marketing_data.id}}</td>
+         <td>{{marketing_data.student_name}}</td>
+         <td>{{marketing_data.qualifications}}</td>
+         <td>{{marketing_data.year_of_passout}}</td>
+         <td>{{marketing_data.email}}</td>
+         <td>{{marketing_data.resume}}</td>
+         <td>
+
+          <a href="/marketing_student_update/{{marketing_data.id}}"><button type="submit" class="btn btn-success">update</button></a>
+
+          <a href="/marketing_student_delete/{{marketing_data.id}}"><button type="submit" data-target="#exampleModalCenter"
+            class="btn btn-danger">delete</button></a>
+         </td>
+        </tr>
+        {% endfor %}
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+  </div>
+ </div>
+</div>
+
+{% endblock %}

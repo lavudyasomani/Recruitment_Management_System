@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+
+<div class="container justify-content-center py-2">
+ <div class="center verticle_center">
+  <div class="login_section py-2">
+   <div class="">
+    <div class="center py-3 ">
+     <h1>
+      <h1> Marketing Student Update Form</h1>
+     </h1>
+    </div>
+   </div>
+   <div class="row justify-content-center">
+    <div class="col-md-7">
+
+     <form method="post">
+      {% for message in messages %}
+      <div class="alert alert-danger {{ message.tags }} alert-dismissible fade show" role="alert">
+       {{ message }}
+       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      {% endfor %}
+
+      {% csrf_token %}
+      {{ form.as_p }}
+
+      <div class="field margin_0 py-3 ">
+       <button type="submit" class="main_bt py-3">Update</button>
+       <a href="{% url 'marketing_home' %}" class="btn btn-secondary py-3 m-3">Back to Home</a>
+      </div>
+     </form>
+    </div>
+   </div>
+  </div>
+ </div>
+</div>
+
+
+
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,36 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container justify-content-center ">
+   <div class="center verticle_center full_height">
+      <div class="login_section py-5">
+            <div class="center">
+               <h1 class="text-danger">INTERVIEW QUESTIONS</h1>
+            </div><hr>
+         <div class="row justify-content-center">
+            <div class="col-md-11">
+
+            <li>
+               {% for sub_lang in interview_question %}
+               <a href="#{{sub_lang.id}}" data-toggle="collapse" aria-expanded="false" class=""><span>{{sub_lang.question}}</span></a><hr>
+               {% for ans in sub_lang.interview_question_answer_set.all %}
+               <ul class="collapse list-unstyled" id="{{ans.id}}">
+                  <li><a href="#"><span>{{ans.answer}}</span></a></li>
+            
+               </ul>
+               {% endfor %}
+               {% endfor %}
+            </li>
+
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+</div>
+
+
+
+{% endblock %}
